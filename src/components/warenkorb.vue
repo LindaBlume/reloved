@@ -31,7 +31,8 @@
             <option>EU 40</option>
             <option>EU 42</option>
           </select>
-          <button @click="addToWishlist">Auf die Wunschliste</button>
+          <button @click="addToWishlist"><span class="heart">❤</span></button>
+          <button @click="removeFromCart(product)">Entfernen</button>
         </div>
       </div>
       <div class="subscription-info">
@@ -65,6 +66,9 @@ export default {
     methods: {
   addToWishlist(){
     alert("Zur Wunschliste hinzugefügt");
+  },
+  removeFromCart(product){
+    this.$emit('remove-from-cart', product);
   }
 },
   };
