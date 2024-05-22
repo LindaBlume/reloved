@@ -1,5 +1,5 @@
 <template>
-  <section id="warenkorb_section" class="hidden">
+  <section id="warenkorb_section">
   <div id="app">
     <header>
       <div class="promo-banner">
@@ -10,14 +10,14 @@
         <p class="slogen">Besser als neu.</p>
         <div class="nav-icons">
           <span class="heart">❤</span>
-          <button @click="$emit(show-cart)"><span>🛒</span></button>
+          <button @click="$emit('show-cart')"><span>🛒</span></button>
         </div>
       </div>
       <nav>
         <input class="kategorie" type="text" placeholder="Nach Kategorien suchen">
       </nav>
     </header>
-    <button @click="$emit(back)">Zurück zur Homepage</button>
+    <button @click="$emit('back')">Zurück zur Homepage</button>
     <div class="cart" v-if="cart.length > 0">
       <h2>Mein Monatspaket</h2>
       <div class="cart_product" v-for="product in cart" :key="product.id">
@@ -56,8 +56,17 @@
 
 export default {
     name: 'warenkorb',
-    props: ['cart'],
-    
+    props: {
+      cart: {
+        type: Array,
+        required: true
+      }
+    },
+    data(){
+      return{
+        selectedSize: ''
+      };
+    },
     methods: {
   addToWishlist(){
     alert("Zur Wunschliste hinzugefügt");

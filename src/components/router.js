@@ -1,4 +1,3 @@
-
 import { createRouter, createWebHistory } from 'vue-router';
 import Mainpage from './Mainpage.vue';
 import warenkorb from './warenkorb.vue';
@@ -13,4 +12,3 @@ import warenkorb from './warenkorb.vue';
         routes,
 });
 export default router;
-

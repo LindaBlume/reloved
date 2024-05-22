@@ -1,5 +1,5 @@
 <template>
-    <section id="product-detail-page" class="hidden">
+    <section id="product-detail-page">
       <header>
         <div class="promo-banner">Kostenlose Lieferung ab einem Bestellwert von 100 EUR</div>
         <div class="logo">
@@ -7,7 +7,7 @@
           <p class="slogen">Besser als neu.</p>
           <div class="nav-icons">
             <span class="heart">❤</span>
-            <button @click="$emit(show-cart)"><span>🛒</span></button>
+            <button @click="$emit('show-cart')"><span>🛒</span></button>
           </div>
         </div>
         <nav>
@@ -16,7 +16,7 @@
       </header>
       
       <main>
-        <button @click="$emit(back)">Zurück zur Homepage</button>
+        <button @click="$emit('back')">Zurück zur Homepage</button>
         <div class="product-detail-container">
           <div class="product-image">
             <img :src="product.image" :alt="product.name">
@@ -34,13 +34,13 @@
             <button @click="addToCart">Zum Paket hinzufügen</button>
             <div class="accordion">
               <button @click="toggleAccordion('fit')">Größe&Fit</button>
-              <div v-if="accordion.fit" class="accordion-content">Größe des Models: 170 cm. <br> Das Model trägt: 36</div>
+              <div v-if="accordion.fit" class="accordion-content"></div>
               
               <button @click="toggleAccordion('details')">Produktdetails</button>
-              <div v-if="accordion.details" class="accordion-content">100% Baumwolle: leicht, weich, <br> - hoher Bund <br> - normale Passform</div>
+              <div v-if="accordion.details" class="accordion-content"></div>
               
               <button @click="toggleAccordion('delivery')">Lieferung</button>
-              <div v-if="accordion.delivery" class="accordion-content">Kostenloser Versand für qualifizierte Bestellungen</div>
+              <div v-if="accordion.delivery" class="accordion-content"></div>
             </div>
           </div>
         </div>
@@ -65,7 +65,7 @@
 },
 methods: {
   addToCart() {
-    this.$emit("add-to-cart", this.selectedProduct)
+    this.$emit("add-to-cart", this.selectedproduct)
     alert('Produkt hinzugefügt!');
   },
   toggleAccordion(section) {
