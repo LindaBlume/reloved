@@ -52,7 +52,13 @@
 
   export default {
     name: 'Produktdetails',
-    props: ['product'],
+    props: {
+      product: {
+        type: Object,
+        required: true,
+        default: () => ({})
+      }
+    },
     data() {
       return {
         selectedSize: '',
@@ -65,7 +71,8 @@
 },
 methods: {
   addToCart() {
-    this.$emit("add-to-cart", this.selectedproduct)
+    const productToAdd = {...this.product, selectedSize: this.selectedSize,}
+    this.$emit("add-to-cart", productToAdd)
     alert('Produkt hinzugefügt!');
   },
   toggleAccordion(section) {

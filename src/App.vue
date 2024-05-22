@@ -3,12 +3,6 @@
     <mainpage v-if="currentPage === 'mainpage'" @show-product="showProductDetail" @show-cart="showCart"></mainpage>
     <warenkorb v-if="currentPage === 'warenkorb'" :cart="cart" @back="showMainPage"></warenkorb>
     <Produktdetails v-if="currentPage === 'productdetail'" :product="selectedProduct" @back="showMainPage" @show-cart="showCart" @add-to-cart="addToCart"></Produktdetails>
-
-    <div>
-      <p>Current Page: {{ currentPage }}</p>
-      <p>Selected Product: {{ selectedProduct }}</p>
-      <p>Cart: {{ cart }}</p>
-    </div>
   </div>
 </template>
 
@@ -36,6 +30,7 @@ export default {
     showMainPage() {
       console.log('Navigating to Main Page');
       this.currentPage = 'mainpage';
+      console.log(this.currentPage)
     },
     showCart() {
       console.log('Navigating to Cart');
@@ -50,6 +45,7 @@ export default {
     addToCart(product) {
       console.log('Adding to Cart', product);
       this.cart.push(product);
+      console.log(this.cart)
     },
   },
 };

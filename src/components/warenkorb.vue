@@ -62,11 +62,6 @@ export default {
         required: true
       }
     },
-    data(){
-      return{
-        selectedSize: ''
-      };
-    },
     methods: {
   addToWishlist(){
     alert("Zur Wunschliste hinzugefügt");
