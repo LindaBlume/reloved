@@ -24,7 +24,7 @@
           
           <div class="products">
             <h2 class="sortiment">Neu im Sortiment</h2>
-                  <img class="product-special" src="/public/teen-photo-8466399_1280.jpg" alt="Denim Jeans">
+                  <img class="product-special" src="/public/teen-photo-8466399_1280.jpg" alt="Denim Jeans" @click="changeToProduktDetail(9)">
                   <p class="denimjeans">Denim Jeans</p>
                   <button @click="changeToProduktDetail(9)">Jetzt ansehen</button>
           </div>
@@ -35,7 +35,7 @@
           <section class="category"> 
               <div class="essentials">
                 <div class="product" v-for="product in summerProducts" :key="product.id">
-                <img :src="product.image" :alt="product.name">
+                <img :src="product.image" :alt="product.name" @click="changeToProduktDetail(product.id)">
                 <button @click="changeToProduktDetail(product.id)">{{ product.name }}</button>
                 </div>   
               </div>
@@ -52,13 +52,18 @@
           </div>
       </section>   
   </main>
+  <footer-component></footer-component>
     </div>
   </section>
   </template>
   
   <script>
+  import FooterComponent from './Footer.vue';
   export default {
     name: 'mainpage',
+    components: {
+      'footer-component': FooterComponent
+    },
     data() {
       return {
         products: [
@@ -149,6 +154,12 @@
   header {
     background: rgb(255, 255, 255);
     padding: 10px;
+  }
+  footer {
+    margin-top: 100px;
+    background-color: #6eb0c2;
+    font-size: 16px;
+
   }
   .promo-banner {
     background-color: #6eb0c2;

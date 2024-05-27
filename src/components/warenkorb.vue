@@ -21,6 +21,7 @@
     <div class="cart" v-if="cart.length > 0">
       <h2>Mein Monatspaket</h2>
       <div class="cart_product" v-for="product in cart" :key="product.id">
+        <button class="entfernen" @click="removeFromCart(product)">Entfernen</button>
         <img class="pic" :src="product.image" :alt="product.name">
         <div class="product-details">
           <h3>{{ product.name }}</h3>
@@ -31,8 +32,8 @@
             <option>EU 40</option>
             <option>EU 42</option>
           </select>
-          <button @click="addToWishlist"><span class="heart">❤</span></button>
-          <button @click="removeFromCart(product)">Entfernen</button>
+          <button @click="addToWishlist"><span class="heart-w">❤</span></button>
+          
         </div>
       </div>
       <div class="subscription-info">
@@ -47,16 +48,20 @@
         <img src="/public/apple-pay.png" alt="Applepay">
       </div>
     </div>
+    <footer-component></footer-component>
   </div>
 </section>
 </template>
 
 
 <script>
-
+import FooterComponent from './Footer.vue';
 
 export default {
     name: 'warenkorb',
+    components: {
+      'footer-component': FooterComponent
+    },
     props: {
       cart: {
         type: Array,
@@ -180,14 +185,19 @@ button {
 #button-mainpage{
   width: 20%;
 }
-
 .payment-methods img {
   width: 40px; /* Adjust the width as needed */
   height: auto; /* Maintain aspect ratio */
   margin: 0 10px; /* Adjust the spacing between icons */
 }
+.heart-w{
+  font-size: 1.5rem;
+}
+.entfernen{
+  display: flex;
+  order: 2;
 
-
+}
 </style>
 
 

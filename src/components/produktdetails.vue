@@ -45,13 +45,17 @@
           </div>
         </div>
       </main>
+      <footer-component></footer-component>
     </section>
   </template>
   
   <script>
-
+  import FooterComponent from './Footer.vue';
   export default {
     name: 'Produktdetails',
+    components: {
+      'footer-component': FooterComponent
+    },
     props: {
       product: {
         type: Object,
